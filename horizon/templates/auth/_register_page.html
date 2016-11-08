@@ -1,0 +1,21 @@
+{% extends 'auth/_register_form.html' %}
+{% load i18n %}
+
+{% block pre_register %}
+  <div class="container login">
+    <div class="row">
+      <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 horizontal-center">
+        {{ block.super }}
+{% endblock %}
+
+{% block register_header %}
+  {% include 'auth/_splash.html' %}
+  {{ block.super }}
+{% endblock %}
+
+{% block post_register %}
+      {{ block.super }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -47,9 +47,11 @@ TEMPLATE_DEBUG = DEBUG
 
 SITE_BRANDING = 'OpenStack Dashboard'
 
+DOMAIN_URL= None
 WEBROOT = '/'
 LOGIN_URL = None
 LOGOUT_URL = None
+SIGNUP_URL = None
 LOGIN_REDIRECT_URL = None
 STATIC_ROOT = None
 STATIC_URL = None
@@ -310,10 +312,14 @@ if os.path.exists(LOCAL_SETTINGS_DIR_PATH):
 
 if not WEBROOT.endswith('/'):
     WEBROOT += '/'
+if DOMAIN_URL is None:
+    DOMAIN_URL = OPENSTACK_HOST + WEBROOT
 if LOGIN_URL is None:
     LOGIN_URL = WEBROOT + 'auth/login/'
 if LOGOUT_URL is None:
     LOGOUT_URL = WEBROOT + 'auth/logout/'
+if SIGNUP_URL is None:
+    SIGNUP_URL = WEBROOT + 'auth/register/'
 if LOGIN_REDIRECT_URL is None:
     LOGIN_REDIRECT_URL = WEBROOT
 

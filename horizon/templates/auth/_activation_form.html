@@ -1,0 +1,51 @@
+{% load i18n %}
+
+{% block pre_activation %}
+{% endblock %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+    {% block activation_header %}
+      <h3 class="activation-title">
+        {{ page_title }}
+      </h3>
+    {% endblock %}
+    </div>
+
+    <div class="panel-body">
+    {% block activation_body %}
+        <div>
+            {% if activation == "OK" %}
+                <h>Congratulations!</h>
+                <br>
+                <br>
+                You have successfully registered to our OpenStack Platform.
+                <br>
+                Continue to sign in with your account.
+            {% else %}
+                <h>E-mail not confirmed!</h>
+                <br>
+                <br>
+                Please contact to OpenStack administrator.
+                <br>
+                Continue to sign in if you have another valid account.
+            {% endif %}
+        </div>
+    {% endblock %}
+    </div>
+
+    <div class="panel-footer">
+      {% block activation_footer %}
+        <a class="btn btn-primary pull-right" href="{% url 'login' %}" target="_self">
+          {% trans "Continue" %}
+        </a>
+        <div class="clearfix"></div>
+      {% endblock %}
+    </div>
+  </div>
+
+{% block post_activation%}
+</form>
+
+{% endblock %}

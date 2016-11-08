@@ -141,15 +141,18 @@ CACHES = {
 }
 
 # Send email to the console by default
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Or send them to /dev/null
 #EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+# B3Lab / Register patch sends authentication emails, so use smtp backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Configure these for your outgoing email host
 #EMAIL_HOST = 'smtp.my-company.com'
 #EMAIL_PORT = 25
 #EMAIL_HOST_USER = 'djangomail'
 #EMAIL_HOST_PASSWORD = 'top-secret!'
+#EMAIL_USE_TLS = True
 
 # For multiple regions uncomment this configuration, and add (endpoint, title).
 #AVAILABLE_REGIONS = [
@@ -720,3 +723,15 @@ REST_API_REQUIRED_SETTINGS = ['OPENSTACK_HYPERVISOR_FEATURES',
 # For more information see:
 # http://tinyurl.com/anticlickjack
 #DISALLOW_IFRAME_EMBED = True
+
+# B3Lab / Register patch initiates private networks for new users.
+# These settings are used to init this network
+#OPENSTACK_EXT_NET = ''
+#OPENSTACK_DNS_NAMESERVERS = []
+#OPENSTACK_DEFAULT_SUBNET_CIDR = ''
+#OPENSTACK_DEFAULT_GATEWAY_IP = ''
+
+# B3Lab / Register patch sends authentication emails to new registered users.
+# Set the following secrets which will be used to generate authentication token.
+#TOKEN_SECRET_KEY = ''
+#TOKEN_SECURITY_PASSWORD_SALT = ''
