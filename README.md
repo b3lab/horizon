@@ -16,7 +16,7 @@ INSTALLATION
   
 Install required packages (Ubuntu)  
   
-$ sudo apt-get install python-pip python-dev build-essential 
+$ sudo apt-get install python-pip python-dev build-essential   
 $ sudo pip install --upgrade pip 
   
 Install openstack_user_management package, developed by B3LAB  
@@ -24,9 +24,9 @@ Install openstack_user_management package, developed by B3LAB
 Download package from https://pypi.python.org/pypi/openstack_user_management  
 $ sudo pip install openstack_user_management-0.1.0.dev4.tar.gz  
 
-Create or edit /etc/openstack/clouds.yaml and configure cloud-admin section with you cloud parameters.
-$ sudo vi /etc/openstack/clouds.yaml
-
+Create or edit /etc/openstack/clouds.yaml and configure cloud-admin section with you cloud parameters.  
+$ sudo vi /etc/openstack/clouds.yaml  
+  
 ```
 clouds:
    cloud-admin:
@@ -41,22 +41,22 @@ clouds:
     region_name: RegionOne
     volume_api_version: '2'
 ```
-
+  
 Install django-openstack-auth with b3lab/register patch  
-
+  
 $ git clone https://github.com/b3lab/django_openstack_auth.git -b b3lab/register  
 $ cd django-openstack-auth  
 $ sudo pip install .  
   
-Install Horizon with b3lab/register patch
-
+Install Horizon with b3lab/register patch  
+  
 $ git clone https://github.com/b3lab/horizon.git -b b3lab/register  
-$ cd horizon
-$ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py
-$ vi openstack_dashboard/local/local_settings.py
-
+$ cd horizon  
+$ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py  
+$ vi openstack_dashboard/local/local_settings.py  
+  
 Edit local_settings.py with your settings according to [1].  
-[1] http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon-install.html#install-and-configure-components
+[1] http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon-install.html#install-and-configure-components  
   
   Set email host settings.  
 ```
@@ -78,7 +78,7 @@ OPENSTACK_DEFAULT_GATEWAY_IP = '10.0.0.1'
 TOKEN_SECRET_KEY = 'secret'  
 TOKEN_SECURITY_PASSWORD_SALT = 'secret'  
 ```  
-
+  
 Configure apache2 to use this dashboard and restart apache2 service.  
 
   
