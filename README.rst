@@ -1,53 +1,100 @@
-=============================
-Horizon (OpenStack Dashboard)
-=============================
+B3LAB - OpenStack Dashboard Register Panel
+==========================================
 
-Horizon is a Django-based project aimed at providing a complete OpenStack
-Dashboard along with an extensible framework for building new dashboards
-from reusable components. The ``openstack_dashboard`` module is a reference
-implementation of a Django site that uses the ``horizon`` app to provide
-web-based interactions with the various OpenStack projects.
+Horizon is a Django-based project aimed at providing a complete OpenStack Dashboard along with an extensible framework for building new dashboards from reusable components. The openstack_dashboard module is a reference implementation of a Django site that uses the horizon app to provide web-based interactions with the various OpenStack projects.
 
-* Release management: https://launchpad.net/horizon
-* Blueprints and feature specifications: https://blueprints.launchpad.net/horizon
-* Issue tracking: https://bugs.launchpad.net/horizon
+Our forked project of Horizon at b3labregister/ocata branch includes a self registration panel for OpenStack Ocata version. This document describes how to install Horizon Dashboard with a registration panel for OpenStack Ocata.
 
-.. image:: http://governance.openstack.org/badges/horizon.svg
-    :target: http://governance.openstack.org/reference/tags/index.html
+REQUIREMENTS
+============
 
-Using Horizon
-=============
+You need a running OpenStack (stable/ocata) installation. You can use Devstack as you test environment.
+Be aware b3labegister/ocata branch is developed for OpenStack stable/ocata version and it may not work with other versions.
+It is highly recommended for you to try this installation in a virtual environment first.
 
-See ``doc/source/topics/install.rst`` about how to install Horizon
-in your OpenStack setup. It describes the example steps and
-has pointers for more detailed settings and configurations.
+INSTALLATION
+============
 
-It is also available at http://docs.openstack.org/developer/horizon/topics/install.html.
+Install required packages (Ubuntu)
 
-Getting Started for Developers
-==============================
 
-``doc/source/quickstart.rst`` or
-http://docs.openstack.org/developer/horizon/quickstart.html
-describes how to setup Horizon development environment and start development.
+.. sourcecode:: console  
 
-Building Contributor Documentation
-==================================
+  $ sudo apt-get install python-pip python-dev build-essential   
+  $ sudo pip install --upgrade pip 
+  
+Install openstack_user_manager package, developed by B3LAB
 
-This documentation is written by contributors, for contributors.
+.. sourcecode:: console  
 
-The source is maintained in the ``doc/source`` directory using
-`reStructuredText`_ and built by `Sphinx`_
+  $ git clone https://github.com/b3lab/safir_openstack_user_manager.git  
+  $ cd openstack_user_management/  
+  $ sudo pip install . 
 
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
-.. _Sphinx: http://sphinx-doc.org/
+Create or edit /etc/openstack/clouds.yaml and configure cloud-admin section with your cloud parameters.
+$ sudo vi /etc/openstack/clouds.yaml
+  
+.. sourcecode:: console  
 
-* Building Automatically::
+  clouds:  
+    cloud-admin:  
+     auth:  
+       auth_url: http://<contoller_node_hostname>:5000/v3  
+       password: <admin_password>  
+       project_domain_name: default  
+       project_name: admin  
+       user_domain_name: default  
+       username: admin  
+     identity_api_version: '3'  
+     region_name: RegionOne  
+     volume_api_version: '2'  
 
-    $ ./run_tests.sh --docs
+Install django-openstack-auth with b3lab/register patch
 
-* Building Manually::
+.. sourcecode:: console  
 
-    $ tools/with_venv.sh sphinx-build doc/source doc/build/html
+  $ git clone https://github.com/b3lab/django_openstack_auth.git -b b3labregister/ocata  
+  $ cd django-openstack-auth  
+  $ sudo pip install .  
+  
+Install Horizon with b3lab/register patch
 
-Results are in the ``doc/build/html`` directory
+.. sourcecode:: console  
+
+  $ git clone https://github.com/b3lab/horizon.git -b b3labregister/ocata  
+  $ cd horizon  
+  $ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py  
+  $ vi openstack_dashboard/local/local_settings.py  
+  
+Edit local_settings.py with your settings according to [1] and configure the following settings for Register Panel.
+[1] https://docs.openstack.org/ocata/install-guide-ubuntu/horizon-install.html
+
+Set email host settings.  
+
+.. sourcecode:: console  
+
+  EMAIL_HOST = 'smtp.a.com'
+  EMAIL_PORT = 25
+  EMAIL_HOST_USER = 'a@a.com'
+  EMAIL_HOST_PASSWORD = 'a'
+  EMAIL_USE_TLS = True
+
+Set initial private networks settings for new users.
+
+.. sourcecode:: console 
+
+  OPENSTACK_EXT_NET = 'public-network-name'
+  OPENSTACK_DNS_NAMESERVERS = ['172.16.1.1']
+  OPENSTACK_DEFAULT_SUBNET_CIDR = '10.0.0.0/24'
+  OPENSTACK_DEFAULT_GATEWAY_IP = '10.0.0.1'
+
+Set authentication token secrets.
+
+.. sourcecode:: console  
+  
+  TOKEN_SECRET_KEY = 'secret'
+  TOKEN_SECURITY_PASSWORD_SALT = 'secret'
+
+
+Configure apache2 to use this dashboard and restart apache2 service.
+
