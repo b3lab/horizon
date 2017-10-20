@@ -1,0 +1,97 @@
+{% load i18n %}
+
+{% block pre_register %}
+<form id="form1" class="ng-pristine ng-valid ng-scope"
+      method="POST"
+      action="{% url 'register' %}"
+      autocomplete="off" >
+  {% csrf_token %}
+{% endblock %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+    {% block register_header %}
+      <h3 class="register-title">
+        {% trans 'Register' %}
+      </h3>
+    {% endblock %}
+    </div>
+    <div class="panel-body">
+    {% block register_body %}
+      {% if HORIZON_CONFIG.password_autocomplete != "on" %}
+        <div class="fake_credentials" style="display: none">
+          <input type="text" name="fake_email" value="" />
+          <input type="password" name="fake_password" value="" />
+        </div>
+      {%endif%}
+        <div class="panel-body">
+            <fieldset hz-login-finder>
+                {% include "horizon/common/_form_fields.html" %}
+                <a href="{% url 'terms_and_conditions' %}" target="_blank">
+                 {% trans "B3LAB User Agreement" %}
+                </a>
+            </fieldset>
+            {% if registered == 'OK' %}
+            <div class="form-group clearfix warning">
+                <p>
+                  {% trans "Confirmation mail sent to your e-mail address." %}
+                </p>
+            </div>
+            {% elif registered == 'empty_fields' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  {% trans "All fields are required." %}
+                </p>
+            </div>
+            {% elif registered == 'passwords_not_match' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  {% trans "Passwords do not match." %}
+                </p>
+            </div>
+            {% elif registered == 'user_in_use' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  You are already registered. Click <a href="{% url 'forgot_password' form.email.value %}">here</a> if you forgot your password, or <a href="{% url 'resend_confirm_mail' form.email.value %}">here</a> to re-send the account activation mail.
+                </p>
+            </div>
+            {% elif registered == 'openstack_error' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  {% trans "An error occured, please try again later." %}
+                </p>
+            </div>
+            {% elif registered == 'passwords_too_weak' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  {% trans "Password is too weak, please enter at least 6 characters." %}
+                </p>
+            </div>
+            {% elif registered == 'univ_mail_not_used' %}
+            <div class="form-group clearfix error help-block alert alert-danger">
+                <p>
+                  {% trans "Please enter your official university e-mail address." %}
+                </p>
+            </div>
+            {%endif%}
+        </div>
+    {% endblock %}
+    </div>
+
+    <div class="panel-footer">
+      {% block register_footer %}
+        <button id="registerBtn" type="submit" class="btn btn-primary pull-right">{% trans "Register" %}
+        </button>
+        <a class="btn btn-primary pull-left" href="{% url 'login' %}" target="_self">
+          {% trans "Back" %}
+        </a>
+        <div class="clearfix"></div>
+      {% endblock %}
+    </div>
+  </div>
+
+{% block post_register%}
+</form>
+
+{% endblock %}

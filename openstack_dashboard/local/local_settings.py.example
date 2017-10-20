@@ -843,3 +843,16 @@ ALLOWED_PRIVATE_SUBNET_CIDR = {'ipv4': [], 'ipv6': []}
 #USER_TABLE_EXTRA_INFO = {
 #   'phone_num': _('Phone Number'),
 #}
+
+# B3Lab / Register patch initiates private networks for new users.
+# These settings are used to init this network
+#OPENSTACK_EXT_NET = ''
+#OPENSTACK_DNS_NAMESERVERS = []
+#OPENSTACK_DEFAULT_SUBNET_CIDR = ''
+#OPENSTACK_DEFAULT_GATEWAY_IP = ''
+
+# B3Lab / Register patch sends authentication emails to new registered users.
+# Set the following secrets which will be used to generate authentication token.
+#TOKEN_SECRET_KEY = ''
+#TOKEN_SECURITY_PASSWORD_SALT = ''
+

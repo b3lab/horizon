@@ -46,6 +46,7 @@ DEBUG = False
 SITE_BRANDING = 'OpenStack Dashboard'
 
 WEBROOT = '/'
+DOMAIN_URL= None
 LOGIN_URL = None
 LOGOUT_URL = None
 LOGIN_REDIRECT_URL = None
@@ -369,12 +370,16 @@ OPENSTACK_IMAGE_FORMATS = [fmt for (fmt, name)
 
 if not WEBROOT.endswith('/'):
     WEBROOT += '/'
+if DOMAIN_URL is None:
+    DOMAIN_URL = OPENSTACK_HOST + WEBROOT
 if LOGIN_URL is None:
     LOGIN_URL = WEBROOT + 'auth/login/'
 if LOGOUT_URL is None:
     LOGOUT_URL = WEBROOT + 'auth/logout/'
 if LOGIN_REDIRECT_URL is None:
     LOGIN_REDIRECT_URL = WEBROOT
+if SIGNUP_URL is None:
+    SIGNUP_URL = WEBROOT + 'auth/register/'
 
 if MEDIA_ROOT is None:
     MEDIA_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'media'))
