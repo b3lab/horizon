@@ -44,13 +44,13 @@ clouds:
   
 Install django-openstack-auth with b3lab/register patch  
   
-$ git clone https://github.com/b3lab/django_openstack_auth.git -b b3lab/register  
+$ git clone https://github.com/b3lab/django_openstack_auth.git -b b3labregister/mitaka  
 $ cd django-openstack-auth  
 $ sudo pip install .  
   
 Install Horizon with b3lab/register patch  
   
-$ git clone https://github.com/b3lab/horizon.git -b b3lab/register  
+$ git clone https://github.com/b3lab/horizon.git -b b3labregister/mitaka  
 $ cd horizon  
 $ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py  
 $ vi openstack_dashboard/local/local_settings.py  
