@@ -49,7 +49,15 @@ $ sudo vi /etc/openstack/clouds.yaml
      region_name: RegionOne  
      volume_api_version: '2'  
 
-Install django-openstack-auth with b3lab/register patch
+Install safir_email_notifier package, developed by B3LAB  
+
+.. sourcecode:: console  
+
+  $ git clone https://github.com/b3lab/safir_email_notifier.git  
+  $ cd safir_email_notifier/  
+  $ sudo pip install .
+
+Install django-openstack-auth with b3lab register panel patch
 
 .. sourcecode:: console  
 
@@ -57,7 +65,7 @@ Install django-openstack-auth with b3lab/register patch
   $ cd django-openstack-auth  
   $ sudo pip install .  
   
-Install Horizon with b3lab/register patch
+Install Horizon with b3lab register panel patch
 
 .. sourcecode:: console  
 
@@ -66,7 +74,7 @@ Install Horizon with b3lab/register patch
   $ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py  
   $ vi openstack_dashboard/local/local_settings.py  
   
-Edit local_settings.py with your settings according to [1] and configure the following settings for Register Panel.
+Edit local_settings.py with your settings according to [1] and configure the following settings for the register panel.
 [1] https://docs.openstack.org/ocata/install-guide-ubuntu/horizon-install.html
 
 Set email host settings.  
