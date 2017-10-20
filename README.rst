@@ -28,7 +28,7 @@ Install openstack_user_manager package, developed by B3LAB
 .. sourcecode:: console  
 
   $ git clone https://github.com/b3lab/safir_openstack_user_manager.git  
-  $ cd openstack_user_management/  
+  $ cd safir_openstack_user_manager/  
   $ sudo pip install . 
 
 Create or edit /etc/openstack/clouds.yaml and configure cloud-admin section with your cloud parameters.
@@ -62,7 +62,7 @@ Install django-openstack-auth with b3lab register panel patch
 .. sourcecode:: console  
 
   $ git clone https://github.com/b3lab/django_openstack_auth.git -b b3labregister/ocata  
-  $ cd django-openstack-auth  
+  $ cd django_openstack_auth  
   $ sudo pip install .  
   
 Install Horizon with b3lab register panel patch
