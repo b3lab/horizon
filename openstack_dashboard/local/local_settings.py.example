@@ -856,3 +856,11 @@ ALLOWED_PRIVATE_SUBNET_CIDR = {'ipv4': [], 'ipv6': []}
 #TOKEN_SECRET_KEY = ''
 #TOKEN_SECURITY_PASSWORD_SALT = ''
 
+# Cloud admin configuration name in clouds.yaml file.
+# The clouds.yaml file should either be in the
+# current directory or
+# ~/.config/openstack directory or
+# /etc/openstack directory.
+#CLOUD_CONFIG_NAME = ''
+#USER_AGGREMENT_FILE = ''
+

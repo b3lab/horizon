@@ -95,6 +95,17 @@ Set authentication token secrets.
   TOKEN_SECRET_KEY = 'secret'
   TOKEN_SECURITY_PASSWORD_SALT = 'secret'
 
+Set OpenStack cloud config name.
+
+.. sourcecode:: console  
+
+  CLOUD_CONFIG_NAME = 'cloud-admin'
+
+Set user aggrement file path.
+
+.. sourcecode:: console  
+
+  USER_AGGREMENT_FILE = '/path/to/user/aggrement/file'
 
 Configure apache2 to use this dashboard and restart apache2 service.
 
