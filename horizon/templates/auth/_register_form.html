@@ -12,7 +12,7 @@
 
     <div class="panel-heading">
     {% block register_header %}
-      <h3 class="register-title">
+      <h3 class="login-title">
         {% trans 'Register' %}
       </h3>
     {% endblock %}
@@ -53,7 +53,7 @@
             {% elif registered == 'user_in_use' %}
             <div class="form-group clearfix error help-block alert alert-danger">
                 <p>
-                  You are already registered. Click <a href="{% url 'forgot_password' form.email.value %}">here</a> if you forgot your password, or <a href="{% url 'resend_confirm_mail' form.email.value %}">here</a> to re-send the account activation mail.
+                  You are already registered. Click <a href="{% url 'forgot_password' %}">here</a> if you forgot your password, or <a href="{% url 'resend_confirm_mail' form.email.value %}">here</a> to re-send the account activation mail.
                 </p>
             </div>
             {% elif registered == 'openstack_error' %}
