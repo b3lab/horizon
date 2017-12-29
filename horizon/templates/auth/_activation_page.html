@@ -1,0 +1,21 @@
+{% extends 'auth/_activation_form.html' %}
+{% load i18n %}
+
+{% block pre_activation %}
+  <div class="container login">
+    <div class="row">
+      <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 horizontal-center">
+        {{ block.super }}
+{% endblock %}
+
+{% block activation_header %}
+  {% include 'auth/_splash.html' %}
+  {{ block.super }}
+{% endblock %}
+
+{% block post_activation %}
+      {{ block.super }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

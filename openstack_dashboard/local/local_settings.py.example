@@ -894,3 +894,39 @@ ALLOWED_PRIVATE_SUBNET_CIDR = {'ipv4': [], 'ipv6': []}
 # Once the password expires keystone will deny the access and users must
 # contact an admin to change their password.
 #PASSWORD_EXPIRES_WARNING_THRESHOLD_DAYS = 0
+
+#
+# B3LAB REGISTER PANEL SETTINGS
+#
+
+DOMAIN_URL = OPENSTACK_HOST + WEBROOT
+SIGNUP_URL = WEBROOT + 'auth/register/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Configure these for your outgoing email host
+#EMAIL_HOST = 'smtp.my-company.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'a@my-company.com'
+#EMAIL_HOST_PASSWORD = 'secret'
+#EMAIL_USE_TLS = True
+
+# B3LAB / Register panel initiates private networks for new users.
+# These settings are used to init this network
+#OPENSTACK_EXT_NET = 'provider'
+#OPENSTACK_DNS_NAMESERVERS = ['8.8.8.8']
+#OPENSTACK_DEFAULT_SUBNET_CIDR = '10.0.0.0/24'
+#OPENSTACK_DEFAULT_GATEWAY_IP = '10.0.0.1'
+
+# B3Lab / Register patch sends authentication emails to new registered users.
+# Set the following secrets which will be used to generate authentication token.
+#TOKEN_SECRET_KEY = 'mysecretkey'
+#TOKEN_SECURITY_PASSWORD_SALT = 'mysecuritypasswordsalt'
+
+# Cloud admin configuration name in clouds.yaml file.
+# The clouds.yaml file should either be in the
+# current directory or
+# ~/.config/openstack directory or
+# /etc/openstack directory.
+#CLOUD_CONFIG_NAME = 'cloud-admin'
+#USER_AGREEMENT_FILE = '/path/to/my/agreement/file'
