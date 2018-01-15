@@ -1,0 +1,51 @@
+{% load i18n %}
+
+{% block pre_terminated %}
+{% endblock %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+    {% block terminated_header %}
+      <h3 class="login-title">
+        {% trans 'Account Terminated' %}
+      </h3>
+    {% endblock %}
+    </div>
+
+    <div class="panel-body">
+    {% block terminated_body %}
+        <div>
+            <h>Hesabınız kapatıldı!</h>
+            <br>
+            <br>
+            Hesabınıza tanımlanmış kredi limitini tükettiniz ve oluşturduğunuz
+            kaynaklar silindi. Safir Bulut'u tekrar kullanmaya başlamak için
+            araştırma alanınızı açıklayan bir raporu aşağıdaki formatta
+            oluşturunuz ve safir.iletisim@tubitak.gov.tr adresine gönderiniz.
+            Başvurunuz uygun bulunursa hesabınız tekrar açılacaktır.
+            <br>
+            <br>
+            <a href="{% url 'report_template' %}" target="_blank">
+                 {% trans "Research Report Template" %}
+            </a>
+            <br>
+            <br>
+            Safir Bulut ekibi
+        </div>
+    {% endblock %}
+    </div>
+
+    <div class="panel-footer">
+      {% block terminated_footer %}
+        <a class="btn btn-primary pull-right" href="{% url 'login' %}" target="_self">
+          {% trans "Back" %}
+        </a>
+        <div class="clearfix"></div>
+      {% endblock %}
+    </div>
+  </div>
+
+{% block post_terminated%}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load i18n %}
+
+{% block pre_suspended %}
+{% endblock %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+    {% block suspended_header %}
+      <h3 class="login-title">
+        {% trans 'Account Suspended' %}
+      </h3>
+    {% endblock %}
+    </div>
+
+    <div class="panel-body">
+    {% block suspended_body %}
+        <div>
+            <h>Hesabınız donduruldu!</h>
+            <br>
+            <br>
+            Hesabınıza tanımlanmış kredi limitini tükettiniz. Safir Bulut'u
+            kullanmaya devam etmek için çalışmalarınızla ilgili bir raporu
+            aşağıdaki formata uygun şekilde hazırlayıp safir.iletisim@tubitak.gov.tr
+            adresine {{ termination_date | date:"d/m/Y" }} tarihine
+            kadar gönderiniz.
+            <br>
+            <br>
+            <p>Bu tarihten sonra Safir Bulut üzerinde oluşturduğunuz kaynaklar
+                silinecek ve hesabınız kapatılacaktır.</p>
+            <br>
+            <br>
+            <a href="{% url 'report_template' %}" target="_blank">
+                 {% trans "Research Report Template" %}
+            </a>
+            <br>
+            <br>
+            Safir Bulut ekibi
+        </div>
+    {% endblock %}
+    </div>
+
+    <div class="panel-footer">
+      {% block suspended_footer %}
+        <a class="btn btn-primary pull-right" href="{% url 'login' %}" target="_self">
+          {% trans "Back" %}
+        </a>
+        <div class="clearfix"></div>
+      {% endblock %}
+    </div>
+  </div>
+
+{% block post_suspended%}
+
+{% endblock %}

@@ -929,4 +929,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # ~/.config/openstack directory or
 # /etc/openstack directory.
 #CLOUD_CONFIG_NAME = 'cloud-admin'
+
+#RESEARCH_REPORT_TEMPLATE = '/path/to/my/research/report/template'
 #USER_AGREEMENT_FILE = '/path/to/my/agreement/file'
