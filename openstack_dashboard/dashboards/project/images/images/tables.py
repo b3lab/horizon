@@ -337,7 +337,8 @@ class ImagesTable(tables.DataTable):
         row_class = UpdateRow
         status_columns = ["status"]
         verbose_name = _("Images")
-        table_actions = (OwnerFilter, CreateImage, DeleteImage,)
+        # table_actions = (OwnerFilter, CreateImage, DeleteImage,)
+        table_actions = (OwnerFilter, DeleteImage,)
         launch_actions = ()
         if getattr(settings, 'LAUNCH_INSTANCE_LEGACY_ENABLED', False):
             launch_actions = (LaunchImage,) + launch_actions
