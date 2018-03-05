@@ -1,33 +1,34 @@
 {% load i18n %}
 
-{% block pre_suspended %}
+{% block pre_creditload %}
 {% endblock %}
 
   <div class="panel panel-default">
 
     <div class="panel-heading">
-    {% block suspended_header %}
+    {% block creditload_header %}
       <h3 class="login-title">
-        {% trans 'Account Suspended' %}
+        {% trans 'Credit Load' %}
       </h3>
     {% endblock %}
     </div>
 
     <div class="panel-body">
-    {% block suspended_body %}
+    {% block creditload_body %}
         <div>
-            <h>Hesabınız donduruldu!</h>
+            <h>Safir Bulut Altyapısı</h>
             <br>
             <br>
-            Hesabınıza tanımlanmış kredi limitini tükettiniz. Safir Bulut'u
-            kullanmaya devam etmek için çalışmalarınızla ilgili bir raporu
-            aşağıdaki formata uygun şekilde hazırlayıp safir.iletisim@tubitak.gov.tr
-            adresine {{ termination_date | date:"d/m/Y" }} tarihine
-            kadar gönderiniz.
+            B3LAB ekibi tarafından üniversiteler ve kamu kurumlarına bulut
+            altyapı hizmeti sağlanması amacıyla sunulan Safir Bulut
+            2018 yılı itibariyle ücretsiz hizmet vermektedir!
             <br>
             <br>
-            Bu tarihten sonra Safir Bulut üzerinde oluşturduğunuz kaynaklar
-            silinecek ve hesabınız kapatılacaktır.
+            Ancak Safir Bulut altyapısını kullanan araştırmacıların altyapıyı
+            kullanım amaçlarını ve ihtiyaçlarını raporlamaları beklenmektedir.
+            Safir Bulutu kullanmaya devam etmek için aşağıdaki formata uygun
+            raporunuzu safir.iletisim@tubitak.gov.tr adresine gönderip kontör
+            talep edebilirsiniz.
             <br>
             <br>
             <a href="{% url 'report_template' %}" target="_blank">
@@ -41,7 +42,7 @@
     </div>
 
     <div class="panel-footer">
-      {% block suspended_footer %}
+      {% block creditload_footer %}
         <a class="btn btn-primary pull-right" href="{% url 'login' %}" target="_self">
           {% trans "Back" %}
         </a>
@@ -50,6 +51,6 @@
     </div>
   </div>
 
-{% block post_suspended%}
+{% block post_creditload%}
 
 {% endblock %}
