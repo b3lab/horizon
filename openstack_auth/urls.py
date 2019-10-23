@@ -28,7 +28,18 @@ urlpatterns = [
         name='switch_services_region'),
     url(r'^switch_keystone_provider/(?P<keystone_provider>[^/]+)/$',
         views.switch_keystone_provider,
-        name='switch_keystone_provider')
+        name='switch_keystone_provider'),
+    url(r"^register/$", views.register, name='register'),
+    url(r"^forgot_password/$", views.forgot_password,
+        name='forgot_password'),
+    url(r"^resend_confirm_mail/(?P<email>[^/]+)/$", views.resend_confirm_mail,
+        name='resend_confirm_mail'),
+    url(r'^confirm_mail/(?P<token>[^/]+)/$', views.confirm_mail,
+        name='confirm_mail'),
+    url(r"^terms_and_conditions/$", views.terms_and_conditions,
+        name='report_template'),
+    url(r"^credit_load/$", views.credit_load,
+        name='credit_load'),
 ]
 
 if utils.is_websso_enabled():

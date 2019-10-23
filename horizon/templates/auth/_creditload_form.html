@@ -1,0 +1,56 @@
+{% load i18n %}
+
+{% block pre_creditload %}
+{% endblock %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+    {% block creditload_header %}
+      <h3 class="login-title">
+        {% trans 'Credit Load' %}
+      </h3>
+    {% endblock %}
+    </div>
+
+    <div class="panel-body">
+    {% block creditload_body %}
+        <div>
+            <h>Safir Bulut Altyapısı</h>
+            <br>
+            <br>
+            B3LAB ekibi tarafından üniversiteler ve kamu kurumlarına bulut
+            altyapı hizmeti sağlanması amacıyla sunulan Safir Bulut
+            2018 yılı itibariyle ücretsiz hizmet vermektedir!
+            <br>
+            <br>
+            Ancak Safir Bulut altyapısını kullanan araştırmacıların altyapıyı
+            kullanım amaçlarını ve ihtiyaçlarını raporlamaları beklenmektedir.
+            Safir Bulutu kullanmaya devam etmek için aşağıdaki formata uygun
+            raporunuzu safir.iletisim@tubitak.gov.tr adresine gönderip kontör
+            talep edebilirsiniz.
+            <br>
+            <br>
+            <a href="{% url 'report_template' %}" target="_blank">
+                 {% trans "Safir Bulut Altyapı Kullanım Raporu Formatı" %}
+            </a>
+            <br>
+            <br>
+            Safir Bulut ekibi
+        </div>
+    {% endblock %}
+    </div>
+
+    <div class="panel-footer">
+      {% block creditload_footer %}
+        <a class="btn btn-primary pull-right" href="{% url 'login' %}" target="_self">
+          {% trans "Back" %}
+        </a>
+        <div class="clearfix"></div>
+      {% endblock %}
+    </div>
+  </div>
+
+{% block post_creditload%}
+
+{% endblock %} 

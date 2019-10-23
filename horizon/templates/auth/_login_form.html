@@ -79,6 +79,14 @@
         <button id="loginBtn" type="submit" class="btn btn-primary pull-right">
           <span>{% trans "Sign In" %}</span>
         </button>
+	<div class="pull-left">
+          <a style="text-decoration: underline" href="{% url 'register' %}" target="_self">
+            {% trans "Register" %}
+          </a><br>
+          <a style="text-decoration: underline" href="{% url 'forgot_password' %}" target="_self">
+            {% trans "Forgot Password" %}
+          </a>
+        </div>
         <div class="clearfix"></div>
       {% endblock %}
     </div>
