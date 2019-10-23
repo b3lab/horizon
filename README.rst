@@ -92,12 +92,6 @@ Set initial private networks settings for new users.
   OPENSTACK_DEFAULT_SUBNET_CIDR = '10.0.0.0/24'
   OPENSTACK_DEFAULT_GATEWAY_IP = '10.0.0.1'
 
-Set authentication token secrets.
-
-.. sourcecode:: console  
-
-  TOKEN_SECRET_KEY = 'secret'
-  TOKEN_SECURITY_PASSWORD_SALT = 'secret'
 
 Set OpenStack cloud config name.
 
