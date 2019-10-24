@@ -544,15 +544,15 @@ def confirm_mail(request, token):
     projectname = email
     username = email
 
-    if check_old_customer(conn, projectname):
-        # enable user
-        activation = 'OK'
-        if not conn.update_project_status(projectname, True):
-            activation = 'openstack_error'
-        if not conn.update_user_status(username, True):
-            activation = 'openstack_error',
-    else:
-        activation = 'failed'
+#    if check_old_customer(conn, projectname):
+#        # enable user
+#        activation = 'OK'
+#        if not conn.update_project_status(projectname, True):
+#            activation = 'openstack_error'
+#        if not conn.update_user_status(username, True):
+#            activation = 'openstack_error',
+#    else:
+#        activation = 'failed'
 
     # TODO(ecelik): send_success_mail(username, email)
     return shortcuts.render(
