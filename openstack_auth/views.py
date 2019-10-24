@@ -168,20 +168,20 @@ def login(request, template_name=None, extra_context=None, **kwargs):
             project_id = conn.get_project_from_user(
                 role_name=settings.OPENSTACK_KEYSTONE_DEFAULT_ROLE,
                 user_name=username)
-            if project_id:
-                customer_status =  conn.get_billing_customer_status(project_id)
-                if customer_status in ('SUSPENSION_STARTED',
-                                       'SUSPENDED',
-                                       'SUSPENSION_FAILED'):
-                    termination_date = conn.get_customer_termination_date(project_id)
-                    return shortcuts.render(
-                        request, 'auth/suspended.html',
-                        {'termination_date': termination_date})
-                elif customer_status in ('TERMINATION_STARTED',
-                                         'TERMINATED',
-                                         'TERMINATION_FAILED'):
-                    return shortcuts.render(
-                        request, 'auth/terminated.html')
+#            if project_id:
+#                customer_status =  conn.get_billing_customer_status(project_id)
+#                if customer_status in ('SUSPENSION_STARTED',
+#                                       'SUSPENDED',
+#                                       'SUSPENSION_FAILED'):
+#                    termination_date = conn.get_customer_termination_date(project_id)
+#                    return shortcuts.render(
+#                        request, 'auth/suspended.html',
+#                        {'termination_date': termination_date})
+#                elif customer_status in ('TERMINATION_STARTED',
+#                                         'TERMINATED',
+#                                         'TERMINATION_FAILED'):
+#                    return shortcuts.render(
+#                        request, 'auth/terminated.html')
     return res
 
 
@@ -559,21 +559,21 @@ def confirm_mail(request, token):
         request, 'auth/activation.html',
         {'activation': activation})
 
-def check_old_customer(conn, project_name):
-    project = conn.get_project(project_name)
-    if project:
-        customer_status = conn.get_billing_customer_status(project.id)
-        if customer_status == 'SUSPENDED' or \
-           customer_status == 'TERMINATED':
-            return False
-        try:
-            customer_status = conn.get_billing_customer_status(project.id)
-            if customer_status == 'SUSPENDED' or \
-               customer_status == 'TERMINATED':
-                return False
-        except:
-            pass
-    return True
+#def check_old_customer(conn, project_name):
+#    project = conn.get_project(project_name)
+#    if project:
+#        customer_status = conn.get_billing_customer_status(project.id)
+#        if customer_status == 'SUSPENDED' or \
+#           customer_status == 'TERMINATED':
+#            return False
+#        try:
+#            customer_status = conn.get_billing_customer_status(project.id)
+#            if customer_status == 'SUSPENDED' or \
+#               customer_status == 'TERMINATED':
+#                return False
+#        except:
+#            pass
+#    return True
 
 def forgot_password(request):
     form = forms.ForgotPassword()

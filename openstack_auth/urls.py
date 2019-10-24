@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^confirm_mail/(?P<token>[^/]+)/$', views.confirm_mail,
         name='confirm_mail'),
     url(r"^terms_and_conditions/$", views.terms_and_conditions,
-        name='report_template'),
+        name='terms_and_conditions'),
     url(r"^credit_load/$", views.credit_load,
         name='credit_load'),
 ]
