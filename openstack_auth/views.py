@@ -532,6 +532,34 @@ def confirm_token(token, expiration=3600):
     return secret
 
 
+#def confirm_mail(request, token):
+#    email = confirm_token(token)
+#
+#    if email is False:
+#        return shortcuts.render(
+#            request, 'auth/activation.html',
+#            {'activation': 'FAIL'})
+#
+#    conn = OpenstackUserManager(settings.CLOUD_CONFIG_NAME)
+#    projectname = email
+#    username = email
+
+#    if check_old_customer(conn, projectname):
+#        # enable user
+#        activation = 'OK'
+#        if not conn.update_project_status(projectname, True):
+#            activation = 'openstack_error'
+#        if not conn.update_user_status(username, True):
+#            activation = 'openstack_error',
+#    else:
+#        activation = 'failed'
+
+#    # TODO(ecelik): send_success_mail(username, email)
+#    return shortcuts.render(
+#        request, 'auth/activation.html',
+#        {'activation': activation})
+
+
 def confirm_mail(request, token):
     email = confirm_token(token)
 
@@ -544,15 +572,12 @@ def confirm_mail(request, token):
     projectname = email
     username = email
 
-#    if check_old_customer(conn, projectname):
-#        # enable user
-#        activation = 'OK'
-#        if not conn.update_project_status(projectname, True):
-#            activation = 'openstack_error'
-#        if not conn.update_user_status(username, True):
-#            activation = 'openstack_error',
-#    else:
-#        activation = 'failed'
+    # enable user
+    activation = 'OK'
+    if not conn.update_project_status(projectname, True):
+        activation = 'openstack_error'
+    if not conn.update_user_status(username, True):
+        activation = 'openstack_error'
 
     # TODO(ecelik): send_success_mail(username, email)
     return shortcuts.render(
