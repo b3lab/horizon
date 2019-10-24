@@ -6,13 +6,13 @@ B3LAB - OpenStack Dashboard Register Panel
 * Project documentation: https://docs.openstack.org/horizon/latest/
 * Release notes: https://docs.openstack.org/releasenotes/horizon/
 
-Our forked project of Horizon at b3labregister/pike branch includes a self registration panel for OpenStack Pike version. This document describes how to install Horizon Dashboard with a registration panel for OpenStack Pike.
+Our forked project of Horizon at safir/stein branch includes a self registration panel for OpenStack Stein version. This document describes how to install Horizon Dashboard with a registration panel for OpenStack Stein.
 
 REQUIREMENTS
 ============
 
-You need a running OpenStack (stable/pike) installation. You can use Devstack as you test environment.
-Be aware b3labegister/pike branch is developed for OpenStack stable/pike version and it may not work with other versions.
+You need a running OpenStack (stable/stein) installation. You can use Devstack as you test environment.
+Be aware safir/stein branch is developed for OpenStack stable/stein version and it may not work with other versions.
 It is highly recommended for you to try this installation in a virtual environment first.
 
 INSTALLATION
@@ -65,13 +65,13 @@ Install Horizon with b3lab register panel patch
 
 .. sourcecode:: console  
 
-  $ git clone https://github.com/b3lab/horizon.git -b b3labregister/pike  
+  $ git clone https://github.com/b3lab/horizon.git -b safir/stein  
   $ cd horizon  
   $ cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py  
   $ vi openstack_dashboard/local/local_settings.py  
 
 Edit local_settings.py with your settings according to [1] and configure the following settings for the register panel.
-[1] https://docs.openstack.org/pike/install-guide-ubuntu/horizon-install.html
+[1] https://docs.openstack.org/horizon/stein/install/install-debian.html
 
 Set email host settings.  
 
