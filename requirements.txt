@@ -72,3 +72,4 @@ XStatic-term.js>=0.0.7.0 # MIT License
 XStatic-tv4>=1.2.7.0 # MIT
 -e git://github.com/b3lab/safir_openstack_user_manager.git#egg=safir_openstack_user_manager
 -e git://github.com/b3lab/safir_email_notifier.git#egg=safir_email_notifier
+itsdangerous>=1.1.0
