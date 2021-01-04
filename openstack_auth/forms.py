@@ -25,6 +25,7 @@ from keystoneauth1 import plugin as auth_plugin
 from openstack_auth import exceptions
 from openstack_auth import utils
 
+from openstack_auth import univs
 
 LOG = logging.getLogger(__name__)
 
@@ -162,6 +163,47 @@ class Login(django_auth_forms.AuthenticationForm):
             raise forms.ValidationError(exc)
         return self.cleaned_data
 
+class Register(forms.Form):
+
+    name = forms.CharField(label=_("Name"),
+                           required=True)
+    # We only accept registrations from universities from Turkey
+    # Later on this can be changed by the Organization name
+    university = forms.ChoiceField(choices=univs.UNIV_CHOICES,
+                                   label=_("University"),
+                                   initial='',
+                                   widget=forms.Select(),
+                                   required=True)
+    email = forms.EmailField(label=_("Official E-mail"),
+                             required=True,
+                             initial='Enter university e-mail address')
+    password = forms.CharField(label=_("Password"),
+                               widget=forms.PasswordInput(render_value=False))
+    retype_password = forms.CharField(label=_("Re-type Password"),
+                                      widget=forms.PasswordInput(
+                                          render_value=False))
+    research_area = forms.CharField(label=_("Research Area"),
+                                    widget=forms.Textarea,
+                                    min_length=60,
+                                    max_length=1000,
+                                    required=True)
+    sign_contract = forms.BooleanField(
+        label=_("I have read and agree with the user agreement"),
+        required=True)
+
+    @sensitive_variables()
+    def clean(self):
+        return self.cleaned_data
+
+
+class ForgotPassword(forms.Form):
+
+    email = forms.EmailField(label=_("Account E-mail"),
+                             required=True)
+
+    @sensitive_variables()
+    def clean(self):
+        return self.cleaned_data
 
 class DummyAuth(auth_plugin.BaseAuthPlugin):
     """A dummy Auth object
@@ -243,3 +285,4 @@ class Password(forms.Form):
             raise forms.ValidationError(
                 _("Unable to update the user password."))
         return self.cleaned_data
+

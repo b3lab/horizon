@@ -33,7 +33,7 @@
   registerImageActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.app.core.images.actions.edit.service',
-    'horizon.app.core.images.actions.create.service',
+    //'horizon.app.core.images.actions.create.service',
     'horizon.app.core.images.actions.create-volume.service',
     'horizon.app.core.images.actions.delete-image.service',
     'horizon.app.core.images.actions.launch-instance.service',
@@ -45,7 +45,7 @@
   function registerImageActions(
     registry,
     editService,
-    createService,
+    //createService,
     createVolumeService,
     deleteImageService,
     launchInstanceService,
@@ -91,7 +91,7 @@
           type: 'delete'
         }
       });
-
+    /*
     imageResourceType.globalActions
       .append({
         id: 'createImageAction',
@@ -101,7 +101,7 @@
           type: 'create'
         }
       });
-
+    */
     // A custom template is provided instead of the 'standard' definition
     // to customize when the rendered button is disabled
     //
@@ -117,3 +117,4 @@
       });
   }
 })();
+
