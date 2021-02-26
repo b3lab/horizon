@@ -566,6 +566,10 @@ def confirm_mail(request, token):
 #    else:
 #        activation = 'failed'
     activation = 'OK'
+    if not conn.update_project_status(projectname, True):
+        activation = 'openstack_error'
+    if not conn.update_user_status(username, True):
+        activation = 'openstack_error'
 
 #    if not conn.update_project_status(projectname, True):
 #        activation = 'openstack_error'
