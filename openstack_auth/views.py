@@ -608,7 +608,7 @@ def forgot_password(request):
                         {'password_reset': 'user_not_found',
                          'form': form})
 
-            s = string.lowercase + string.digits
+            s = string.ascii_lowercase + string.digits
             randpassword = ''.join(random.sample(s, 10))
 
             if not conn.update_user_password(email, randpassword):
