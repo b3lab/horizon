@@ -16,6 +16,7 @@
 # limitations under the License.
 
 UNIV_CHOICES = (
+    ("tubitak.gov.tr", "TÜBITAK"),    
     ("ibu.edu.tr", "ABANT İZZET BAYSAL ÜNİVERSİTESİ"),
     ("agu.edu.tr", "ABDULLAH GÜL ÜNİVERSİTESİ"),
     ("acibadem.edu.tr", "ACIBADEM ÜNİVERSİTESİ"),
@@ -175,7 +176,6 @@ UNIV_CHOICES = (
     ("toros.edu.tr", "TOROS ÜNİVERSİTESİ"),
     ("trakya.edu.tr", "TRAKYA ÜNİVERSİTESİ"),
     ("tunceli.edu.tr", "TUNCELİ ÜNİVERSİTESİ"),
-    ("tubitak.gov.tr", "TÜBITAK"),
     ("thk.edu.tr", "TÜRK HAVA KURUMU ÜNİVERSİTESİ"),
     ("tau.edu.tr", "TÜRK-ALMAN ÜNİVERSİTESİ"),
     ("ufuk.edu.tr", "UFUK ÜNİVERSİTESİ"),
