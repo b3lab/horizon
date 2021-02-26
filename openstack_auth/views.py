@@ -432,7 +432,6 @@ def register(request):
             LOG.info("New user registeration request for " +
                      email + " from " + client_address)
 
-            LOG.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSASAS")
 
             if not (projectname and univ and password and repassword):
                 registered = 'empty_fields'
